@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:25 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/05 20:35:47 by moeota           ###   ########.fr       */
+/*   Updated: 2022/12/06 10:08:41 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,20 @@ void	ft_putnbr_fd(int n, int fd)
 	return ;
 }
 
+int digit_count(int nb)
+{
+	int i;
 
+	i = 0;
+	while (nb != 0)
+	{
+		nb = nb/10;
+		i++;
+		if (nb == 0)
+			return (i); 
+	}
+	return (0);
+}
 
 void	ft_putnbr(int nb, int fd)
 {
@@ -115,7 +128,10 @@ void	ft_putnbr(int nb, int fd)
 		nb = nb % 10;
 	}
 	if (nb < 10)
+	{
 		ft_putchar(nb + 48, fd);
+	}
+	return ;
 }
 
 void	ft_putnbr_16(int nb, int fd)

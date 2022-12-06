@@ -6,14 +6,14 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:25 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/06 00:22:42 by moeota           ###   ########.fr       */
+/*   Updated: 2022/12/06 11:04:31 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-int divided_case(char *find, const char* str, va_list args)
+int divided_case(char *find,  va_list args)
 {
 	char *spec;
 
@@ -23,26 +23,29 @@ int divided_case(char *find, const char* str, va_list args)
 		int c;
 		c = va_arg(args,int); 
 		write(1, &c, 1);
+		return (1);
 	}
 	else if (*(spec) == 's')
 	{
 		char *str2;
 		str2 = va_arg(args,char *);
-		ft_putstr(str2);
-		return (2);
+		return(ft_putstr(str2));
 	}
 	else if (*spec == 'd' || *spec == 'i')
 	{
 		int num;
 		num = va_arg(args, int);
 		ft_putnbr(num,1);
-		return (2);
+		return (digit_count(num));
+		
 	}
 	else if (*spec == 'u')
 	{
 		unsigned int num;
 		num = va_arg(args,unsigned int);
 		ft_putnbr(num,1);
+		return (digit_count(num));
+
 	}
 	
 	else if (*spec == 'p' || *spec == 'x')
@@ -52,18 +55,24 @@ int divided_case(char *find, const char* str, va_list args)
 		if (*spec == 'p')
 			write(1, "0x", 2);
 		ft_putnbr_16_A(p,1);
+		return (digit_count(p) + 1);
+
 	}
 	else if (*spec == 'X')
 	{
 		int num;
 		num = va_arg(args,int);
 		ft_putnbr_16(num,1);
+		return (digit_count(num) + 1);
+
 	}
+	
 	else if (*spec == '%')
 	{
 		ft_putchar('%',1);
+		return (1);
 	}
-	return (2);
+	return (0);
 }
 
 int check(char *str)
@@ -77,7 +86,7 @@ int check(char *str)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int ft_printf(const char *str, ...)
@@ -85,22 +94,18 @@ int ft_printf(const char *str, ...)
 	va_list ap;
 	va_start(ap, str);
 	char *find;
-	int i;
-	int *return_length;
-	char *temp;
-	temp = (char * )str;
+	int return_length;
 	find = (char * )str;
 
 	return_length = 0;
 	
 	while (find)
 	{
+		return_length += check(find);
 		find = ft_strchr_write(find, '%');
-
 		if (find)
 		{
-			divided_case(find, str,ap);
-			// printf("%d",return_length);
+			return_length += divided_case(find, str,ap);
 			find += 2;
 		}
 	}
@@ -110,29 +115,33 @@ int ft_printf(const char *str, ...)
 	// printf("arg_2: %s\n",str);//test
 
 	va_end(ap);
-	return (0);
+	return (return_length);
 }
 
 int main()
 {
-	char *memo = "arg_2:%p";
+	// char *memo = "arg_2:%p";
     // int  a = '3';//test1
 	// char *a = "12345";
 	int num = 123456;
 	int d;
-	char *p;
-	p = "12345";
+	// char *p;
+	// p = "12345";
 	// unsigned int num2 = -234567;
-    double arg_3 = 3.14;
+    // double arg_3 = 3.14;
   	// pritnf("set1:%c",a);
 	printf("-----------------answer1----------------\n");
 	// ft_printf("set1:%p--------",p);
-	d = printf("set1:%Xans",num);
+	d = printf("set1:%pans\n",num);
 	// printf("set1:%d\n",num);
 
-	printf("~~~~%d~~~~~\n",d);
+	printf("~~~~%X~~~~~\n",d);
 	printf("-----------------answer2----------------\n");
-	ft_printf("set1:%Xans",num);
+	// ft_printf("set1:%Xans",num);
+	d = ft_printf("set1:%pans\n",num);
+	printf("~~~~%X~~~~~\n",d);
+
+
 
 }
 
