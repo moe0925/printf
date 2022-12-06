@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2022/11/23 17:11:18 by moeota           ###   ########.fr       */
+/*   Updated: 2022/12/05 20:35:57 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,22 @@
 //------------------------------------------------
 //  プロトタイプ宣言(Prototype declaration)
 //------------------------------------------------
+int		ft_printf(const char *memo, ...);
+
 char	*ft_strchr(const char *s, int c);
 
-int		ft_printf(const char *memo, ...);
+char	*ft_strchr_write(const char *s, int c);
+
+void	ft_putnbr(int nb, int fd);
+
+void	ft_putnbr_16(int nb, int fd);
+
+int     ft_putstr(char *str);
+
+void	ft_putnbr_16_A(int nb, int fd);
+
+int     ft_putchar(char c, int fd);
+
+size_t	ft_strlen(const char *s);
 
 #endif
