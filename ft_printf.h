@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/06 10:09:35 by moeota           ###   ########.fr       */
+/*   Updated: 2022/12/26 15:36:02 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ char	*ft_strchr_write(const char *s, int c);
 
 void     ft_putnbr(int nb, int fd);
 
-void	ft_putnbr_16(int nb, int fd);
+void	    ft_putnbr_16(int nb, int fd,int *count);
 
 int     ft_putstr(char *str);
 
-void	ft_putnbr_16_A(int nb, int fd);
+void	ft_putptr_16(uintptr_t nb, int fd,int *count);
 
 int     ft_putchar(char c, int fd);
 

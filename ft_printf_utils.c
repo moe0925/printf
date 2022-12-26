@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:25 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/06 10:08:41 by moeota           ###   ########.fr       */
+/*   Updated: 2022/12/26 15:39:05 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,15 @@ void	ft_putnbr_fd(int n, int fd)
 int digit_count(int nb)
 {
 	int i;
-
+	
 	i = 0;
+	if (nb == -2147483648)
+		return (11);
+	if (nb < 0)
+	{
+		i++;
+		nb = -nb;
+	}
 	while (nb != 0)
 	{
 		nb = nb/10;
@@ -112,11 +119,16 @@ int digit_count(int nb)
 		if (nb == 0)
 			return (i); 
 	}
-	return (0);
+	return (1);
 }
 
 void	ft_putnbr(int nb, int fd)
 {
+	if (nb == -2147483648)
+	{
+		write(1,"-2147483648",11);
+		return ;
+	}
 	if (nb < 0)
 	{
 		ft_putchar('-', fd);
@@ -134,38 +146,17 @@ void	ft_putnbr(int nb, int fd)
 	return ;
 }
 
-void	ft_putnbr_16(int nb, int fd)
+void	ft_putnbr_16(int nb, int fd, int *count)
 {
 	if (nb < 0)
 	{
 		ft_putchar('-', fd);
 		nb = -nb;
+		*count+= 1;
 	}
 	if (nb >= 16)
 	{
-		ft_putnbr_16(nb / 16, fd);
-		nb = nb % 16;
-	}
-	if (nb < 16)
-	{
-		if (nb < 10)
-			ft_putchar(nb + 48, fd);
-		else
-			ft_putchar('A' + (nb - 10), fd);
-	}
-	
-}
-
-void	ft_putnbr_16_A(int nb, int fd)
-{
-	if (nb < 0)
-	{
-		ft_putchar('-', fd);
-		nb = -nb;
-	}
-	if (nb >= 16)
-	{
-		ft_putnbr_16_A(nb / 16, fd);
+		ft_putnbr_16(nb / 16, fd, count);
 		nb = nb % 16;
 	}
 	if (nb < 16)
@@ -174,8 +165,26 @@ void	ft_putnbr_16_A(int nb, int fd)
 			ft_putchar(nb + 48, fd);
 		else
 			ft_putchar('a' + (nb - 10), fd);
+		*count+= 1;
 	}
+}
+
+void	ft_putptr_16(uintptr_t nb, int fd,int *count)
+{
 	
+	if (nb >= 16)
+	{
+		ft_putptr_16(nb / 16, fd,count);
+		nb = nb % 16;
+	}
+	if (nb < 16)
+	{
+		if (nb < 10)
+			ft_putchar(nb + 48, fd);
+		else
+			ft_putchar('a' + (nb - 10), fd);
+		*count += 1;
+	}
 }
 
 size_t	ft_strlen(const char *s)
