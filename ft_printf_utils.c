@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:56:25 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/26 15:39:05 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/09 15:54:11 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,38 @@ void	ft_putnbr(int nb, int fd)
 	return ;
 }
 
-void	ft_putnbr_16(int nb, int fd, int *count)
+void	ft_putnbr_u(unsigned int nb, int fd)
 {
+	// if (nb == -2147483648)
+	// {
+	// 	write(1,"-2147483648",11);
+	// 	return ;
+	// }
 	if (nb < 0)
 	{
 		ft_putchar('-', fd);
 		nb = -nb;
-		*count+= 1;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10, fd);
+		nb = nb % 10;
+	}
+	if (nb < 10)
+	{
+		ft_putchar(nb + 48, fd);
+	}
+	return ;
+}
+
+void	ft_putnbr_16(int nb, int fd, int *count)
+{
+	if (nb < 0)
+	{
+		// ft_putchar('-', fd);
+		nb = -nb;
+		
+		// return (8);
 	}
 	if (nb >= 16)
 	{
@@ -165,6 +190,31 @@ void	ft_putnbr_16(int nb, int fd, int *count)
 			ft_putchar(nb + 48, fd);
 		else
 			ft_putchar('a' + (nb - 10), fd);
+		*count+= 1;
+	}
+}
+
+
+void	ft_putnbr_16_A(int nb, int fd, int *count)
+{
+	if (nb < 0)
+	{
+		// ft_putchar('-', fd);
+		nb = -nb;
+		
+		// return (8);
+	}
+	if (nb >= 16)
+	{
+		ft_putnbr_16(nb / 16, fd, count);
+		nb = nb % 16;
+	}
+	if (nb < 16)
+	{
+		if (nb < 10)
+			ft_putchar(nb + 48, fd);
+		else
+			ft_putchar('A' + (nb - 10), fd);
 		*count+= 1;
 	}
 }

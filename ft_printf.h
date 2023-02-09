@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2022/12/26 15:36:02 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/09 15:52:46 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	    ft_putnbr_16(int nb, int fd,int *count);
 int     ft_putstr(char *str);
 
 void	ft_putptr_16(uintptr_t nb, int fd,int *count);
+
+void	ft_putnbr_16_A(int nb, int fd, int *count);
+
+void	ft_putnbr_u(unsigned int nb, int fd);
+
 
 int     ft_putchar(char c, int fd);
 
