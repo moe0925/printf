@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-int divided_case(char *str,  va_list args)
+int	divided_case(char *str, va_list args)
 {
-	char *spec;
+	char	*spec;
 
-	spec = str +1;    
+	spec = str + 1;
 	if (*spec == 'c')
 		return (ft_print_c(args));
 	else if (*(spec) == 's')
@@ -30,16 +30,15 @@ int divided_case(char *str,  va_list args)
 	else if (*spec == 'x')
 		return (ft_print_x(args));
 	else if (*spec == 'X')
-		return (ft_print_X(args));	
+		return(ft_print_X(args));	
 	else if (*spec == '%')
 		return (ft_print_sharp());
 	return (0);
 }
 
-
-int check(const char *str)
+int	check(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(str[i] != '\0')
@@ -55,19 +54,18 @@ int check(const char *str)
 
 int ft_printf(const char *str, ...)
 {
-	va_list args;
-	char *find;
-	int return_length;
-    int count;
+	va_list	args;
+	char	*find;
+	int		return_length;
+    int		count;
+	find = (char *)str;
 
-	find = (char * )str;
     count = 2;
 	return_length = 0;
 	va_start(args, str);
 	while (find)
 	{
 		return_length += check(find);
-
 		find = ft_strchr_write(find, '%');
 		if (find)
 		{
@@ -75,8 +73,6 @@ int ft_printf(const char *str, ...)
 			find += count;
 		}
 	}
-
-
 	va_end(args);
 	return (return_length);
 }
@@ -92,8 +88,6 @@ int ft_printf(const char *str, ...)
 // 	int c;
 //     // int a;
 // 	char *p;
-
-
 // 	int a = 10;
 // 	// int b = 100000;
 // 	// printf("%u", -100);
@@ -144,8 +138,6 @@ int ft_printf(const char *str, ...)
 // 	// d = printf("%x",-1);
 // 	// d = printf("%x",-2);
 // 	// d = printf("%x",-3);
-
-
 //     // printf("%#o\n", 10);
 //     // printf("%#o\n", 0);
 //     // d = printf("%x\n", 10);
@@ -167,22 +159,17 @@ int ft_printf(const char *str, ...)
 //     // ft_printf("%#X\n", 10);
 //     // printf("%#X\n", 0);
 //     // ft_printf("%#X\n", 0);
-
 // 	// printf("%d\n", 1);
 // 	// printf("%d\n", 1);
 // 	// printf("%d\n", -1);
 // 	// printf("%d\n", -1);
-
-
 // 	d = printf("% d\n", 1);
 // 	printf("%d\n",d);
 // 	d = ft_printf("% d\n", 1);
 // 	printf("%d\n",d);
-
 // 	printf("----------------------------\n");
 // 	d = printf("% d\n", -1);
 // 	d = ft_printf("% d\n", -1);
-
 // 	// printf("%+d\n", 1);
 // 	// printf("%+d\n", -1);
 // 	// d = printf("%x",-4);
@@ -221,25 +208,17 @@ int ft_printf(const char *str, ...)
 // 	// ft_printf("%s",p);
 // 	// printf("~~~~%X~~~~~\n",d);
 // 	return (0);
-
-
 // }
-
-
-
 // // // void func(char *arg_1, ...) {
 // // //     va_list ap;
 // // //     va_start(ap, arg_1);
 // // //     printf("arg_2: %d\n", va_arg(ap, int));
 // // //     printf("arg_3: %lf\n", va_arg(ap, double));
-
 // //     ~処理~
-
 // }
 // int main(void) {
 //     char *arg_1 = "aaaaa";
 // //     int arg_2 = 5;
 // //     double arg_3 = 3.14;
-
 // //     func(arg_1, arg_2, arg_3);
 // // }
