@@ -30,7 +30,7 @@ int	divided_case(char *str, va_list args)
 	else if (*spec == 'x')
 		return (ft_print_x(args));
 	else if (*spec == 'X')
-		return(ft_print_X(args));	
+		return (ft_print_x2(args));
 	else if (*spec == '%')
 		return (ft_print_sharp());
 	return (0);
@@ -41,7 +41,7 @@ int	check(const char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 			return (i);
@@ -50,17 +50,15 @@ int	check(const char *str)
 	return (i);
 }
 
-
-
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	char	*find;
 	int		return_length;
-    int		count;
-	find = (char *)str;
+	int		count;
 
-    count = 2;
+	find = (char *)str;
+	count = 2;
 	return_length = 0;
 	va_start(args, str);
 	while (find)
