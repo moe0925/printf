@@ -122,6 +122,28 @@ int digit_count(int nb)
 	return (1);
 }
 
+int digit_count_u(unsigned int nb)
+{
+	unsigned int i;
+	
+	i = 0;
+	// if (nb == -2147483648)
+	// 	return (11);
+	// if (nb < 0)
+	// {
+	// 	i++;
+	// 	nb = -nb;
+	// }
+	while (nb != 0)
+	{
+		nb = nb/10;
+		i++;
+		if (nb == 0)
+			return (i); 
+	}
+	return (1);
+}
+
 void	ft_putnbr(int nb, int fd)
 {
 	if (nb == -2147483648)
@@ -148,16 +170,6 @@ void	ft_putnbr(int nb, int fd)
 
 void	ft_putnbr_u(unsigned int nb, int fd)
 {
-	// if (nb == -2147483648)
-	// {
-	// 	write(1,"-2147483648",11);
-	// 	return ;
-	// }
-	if (nb < 0)
-	{
-		ft_putchar('-', fd);
-		nb = -nb;
-	}
 	if (nb >= 10)
 	{
 		ft_putnbr(nb / 10, fd);
@@ -167,18 +179,15 @@ void	ft_putnbr_u(unsigned int nb, int fd)
 	{
 		ft_putchar(nb + 48, fd);
 	}
-	return ;
+	return;
 }
 
-void	ft_putnbr_16(int nb, int fd, int *count)
+
+
+
+
+void	ft_putnbr_16(unsigned int nb, int fd, int *count)
 {
-	if (nb < 0)
-	{
-		// ft_putchar('-', fd);
-		nb = -nb;
-		
-		// return (8);
-	}
 	if (nb >= 16)
 	{
 		ft_putnbr_16(nb / 16, fd, count);
@@ -195,18 +204,11 @@ void	ft_putnbr_16(int nb, int fd, int *count)
 }
 
 
-void	ft_putnbr_16_A(int nb, int fd, int *count)
+void	ft_putnbr_16_A(unsigned int nb, int fd, int *count)
 {
-	if (nb < 0)
-	{
-		// ft_putchar('-', fd);
-		nb = -nb;
-		
-		// return (8);
-	}
 	if (nb >= 16)
 	{
-		ft_putnbr_16(nb / 16, fd, count);
+		ft_putnbr_16_A(nb / 16, fd, count);
 		nb = nb % 16;
 	}
 	if (nb < 16)
@@ -251,7 +253,10 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-// void	ft_putnbr_u(unsigned int nb, int fd)
+
+
+
+// int	ft_putnbr_u(unsigned int nb, int fd)
 // {
 // 	if (nb >= 10)
 // 	{

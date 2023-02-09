@@ -16,7 +16,7 @@ CC = gcc
 
 NAME = libftprintf.a
 
-OBJS = ft_printf.o ft_printf_utils.o
+OBJS = ft_printf.o ft_printf_utils.o ft_print.o  ft_hex.o ft_print_nbr.o ft_printptr.o
 
 INCDIR  = -I src
 
