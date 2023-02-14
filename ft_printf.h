@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2023/02/14 17:03:09 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:06:32 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,26 @@
 //------------------------------------------------
 //  プロトタイプ宣言(Prototype declaration)
 //------------------------------------------------
-int		ft_printf(const char *memo, ...);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strchr_write(const char *s, int c);
-void	ft_putnbr(int nb, int fd);
-void	ft_putnbr_16(unsigned long long nb, int fd, int *count);
-size_t		ft_putstr(char *str);
-void	ft_putptr_16(uintptr_t nb, int fd, int *count);
-void	ft_putnbr_16_a2(unsigned long long nb, int fd, int *count);
-void	ft_putnbr_u(unsigned int nb, int fd);
-int		ft_putchar(char c, int fd);
-size_t	ft_strlen(const char *s);
-int		digit_count(int nb);
-int		digit_count_u(unsigned int nb);
-int		ft_print_c(va_list args);
-int		ft_print_s(va_list args);
-int		ft_print_d_i(va_list args);
-int		ft_print_u(va_list args);
-int		ft_print_p(va_list args);
-int		ft_print_x(va_list args);
-int		ft_print_x2(va_list args);
-int		ft_print_sharp(void);
+int				ft_printf(const char *memo, ...);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strchr_write(const char *s, int c);
+void			ft_putnbr(int nb, int fd);
+void			ft_putnbr_16(unsigned long long nb, int fd, int *count);
+size_t			ft_putstr(char *str);
+void			ft_putptr_16(uintptr_t nb, int fd, int *count);
+void			ft_putnbr_16_a2(unsigned long long nb, int fd, int *count);
+void			ft_putnbr_u(unsigned int nb, int fd);
+int				ft_putchar(char c, int fd);
+size_t			ft_strlen(const char *s);
+int				digit_count(int nb);
+unsigned int	digit_count_u(unsigned int nb);
+int				ft_print_c(va_list args);
+int				ft_print_s(va_list args);
+int				ft_print_d_i(va_list args);
+int				ft_print_u(va_list args);
+int				ft_print_p(va_list args);
+int				ft_print_x(va_list args);
+int				ft_print_x2(va_list args);
+int				ft_print_sharp(void);
 
 #endif

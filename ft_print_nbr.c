@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2023/02/09 21:21:21 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:04:58 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_putnbr_u(unsigned int nb, int fd)
 	return ;
 }
 
-int	digit_count_u(unsigned int nb)
+unsigned int	digit_count_u(unsigned int nb)
 {
 	unsigned int	i;
 
