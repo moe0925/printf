@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2023/02/09 21:21:29 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:03:12 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_print_x2(va_list args)
 	return (count);
 }
 
-void	ft_putnbr_16(unsigned int nb, int fd, int *count)
+void	ft_putnbr_16(unsigned long long nb, int fd, int *count)
 {
 	if (nb >= 16)
 	{
@@ -51,7 +51,7 @@ void	ft_putnbr_16(unsigned int nb, int fd, int *count)
 	}
 }
 
-void	ft_putnbr_16_a2(unsigned int nb, int fd, int *count)
+void	ft_putnbr_16_a2(unsigned long long nb, int fd, int *count)
 {
 	if (nb >= 16)
 	{

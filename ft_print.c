@@ -6,7 +6,7 @@
 /*   By: moeota <moeota@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:58:35 by moeota            #+#    #+#             */
-/*   Updated: 2023/02/09 21:21:11 by moeota           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:02:55 by moeota           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,14 @@ int	ft_print_sharp(void)
 	return (1);
 }
 
-int	ft_putstr(char *str)
+size_t	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != 0)
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, &str[i++], 1);
 	}
 	return (i);
 }
